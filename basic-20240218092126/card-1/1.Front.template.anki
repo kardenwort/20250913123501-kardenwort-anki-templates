@@ -1,0 +1,1330 @@
+<script>
+    function executeClickAction() {
+        var side1 = document.getElementById("side1");
+        var side2 = document.getElementById("side2");
+        var titleIsPreviewer = document.title === "previewer";
+        var sound1Selector = "#sound1 .soundLink, .replaybutton";
+        var sound2Selector = "#sound2 .soundLink, .replaybutton";
+
+        var clickSoundElement = function (selector) {
+            var elem = document.querySelector(selector);
+            if (elem) {
+                elem.click();
+            } else {
+                var onLoadHandler = function () {
+                    var elem = document.querySelector(selector);
+                    if (elem) {
+                        elem.click();
+                    }
+                    window.removeEventListener("load", onLoadHandler);
+                };
+                window.addEventListener("load", onLoadHandler);
+            }
+        };
+
+        if (side1 !== null) {
+            if (side2 === null) {
+                clickSoundElement(sound1Selector);
+            } else {
+                if (titleIsPreviewer) {
+                    clickSoundElement(sound1Selector);
+                } else {
+                    clickSoundElement(sound2Selector);
+                }
+            }
+        }
+    }
+
+    setTimeout(executeClickAction, 20);
+</script>
+
+<script>
+    function updateCheckboxVisibility() {
+        var isBackSide = document.getElementById("side2") !== null;
+
+        var checkboxIds = ["hd-20", "hd-10", "hd-40", "hd-70", "hd-260", "hd-155", "hd-295", "hd-15", "hd-75", "hd-195"]; //, "hd-195", "hd-90", "hd-130"
+
+        checkboxIds.forEach(function (id) {
+            var checkbox = document.getElementById(id);
+            if (checkbox) {
+                if (isBackSide) {
+                    checkbox.classList.remove("hide");
+                    checkbox.classList.add("show");
+                }
+            }
+        });
+    }
+
+    var isAndroid = /Android/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+        document.addEventListener("DOMContentLoaded", updateCheckboxVisibility);
+    } else {
+        updateCheckboxVisibility();
+    }
+</script>
+
+{{#WordSource}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            {{^ToggleAlwaysEmptyField}}
+            <span>
+                {{#WordSourceAudio}}
+                {{WordSourceAudio}}
+                {{/WordSourceAudio}}
+            </span>
+
+            {{#WordSource}}
+            {{^WordSourceAudio}}
+            {{#Source-en-GB}}
+            <span id="sound1">
+                {{tts en_GB voices=gTTS speed=1.0:WordSource}}
+                <!-- en_GB voices=Microsoft_Susan -->
+                <!-- en_US voices=gTTS -->
+                <!-- en_US voices=Microsoft_Zira -->
+                <!-- en_US voices=gTTS -->
+                <!-- de_DE voices=Microsoft_Stefan -->
+                <!-- de_DE voices=gTTS -->
+                <!-- tts uk_UA -->
+                <!-- tts uk_UA voices=gTTS -->
+                <!-- ru_RU voices=Microsoft_Irina -->
+                <!-- ru_RU voices=gTTS -->
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span id="sound1">
+                {{tts en_US voices=gTTS speed=1.0:WordSource}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span id="sound1">
+                {{tts de_DE voices=gTTS speed=1.0:WordSource}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span id="sound1">
+                {{tts uk_UA voices=gTTS speed=1.0:WordSource}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span id="sound1">
+                {{tts ru_RU voices=gTTS speed=1.0:WordSource}}
+            </span>
+            {{/Source-ru-RU}}
+            {{/WordSourceAudio}}
+            {{/WordSource}}
+
+            {{#WordSourceInflectedForm}}
+            {{#Source-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:WordSourceInflectedForm}}
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:WordSourceInflectedForm}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:WordSourceInflectedForm}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:WordSourceInflectedForm}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:WordSourceInflectedForm}}
+            </span>
+            {{/Source-ru-RU}}
+            {{/WordSourceInflectedForm}}
+
+            {{#WordSourceContext}}
+            {{#Source-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:WordSourceContext}}
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:WordSourceContext}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:WordSourceContext}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:WordSourceContext}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:WordSourceContext}}
+            </span>
+            {{/Source-ru-RU}}
+            {{/WordSourceContext}}
+            {{/ToggleAlwaysEmptyField}}
+
+            <!-- #WordSource -->
+            <input class="hide" id="hd-20" type="checkbox">
+            <label for="hd-20">Word
+                {{#WordSourceAudio}}▶{{/WordSourceAudio}}{{^WordSourceAudio}}▷{{/WordSourceAudio}}
+                {{#WordSourceIPA}}●{{/WordSourceIPA}}{{^WordSourceIPA}}○{{/WordSourceIPA}}
+                {{#WordSource}}●{{/WordSource}}{{^WordSource}}○{{/WordSource}}
+                {{#WordSourceInflectedForm}}●{{/WordSourceInflectedForm}}{{^WordSourceInflectedForm}}○{{/WordSourceInflectedForm}}
+                {{#WordSourceContext}}●{{/WordSourceContext}}{{^WordSourceContext}}○{{/WordSourceContext}}
+            </label>
+            <div>
+                <span>
+                    {{#WordSourceIPA}}
+                    [{{WordSourceIPA}}]<br><br>
+                    {{/WordSourceIPA}}
+                </span>
+
+                <span>
+                    {{#WordSource}}
+                    {{WordSource}}<br><br>
+                    {{/WordSource}}
+                </span>
+
+                <span>
+                    {{#WordSourceInflectedForm}}
+                    {{WordSourceInflectedForm}}<br><br>
+                    {{/WordSourceInflectedForm}}
+                </span>
+
+                <span>
+                    {{#WordSourceContext}}
+                    {{WordSourceContext}}<br><br>
+                    {{/WordSourceContext}}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>
+{{/WordSource}}
+
+{{#SentenceSource}}
+{{^SentenceSourceRewriteAISentenceSource}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            {{^ToggleAlwaysEmptyField}}
+            <span>
+                {{#SentenceSourceAudio}}
+                {{SentenceSourceAudio}}
+                {{/SentenceSourceAudio}}
+            </span>
+
+            {{#SentenceSource}}
+            {{^SentenceSourceAudio}}
+            {{#Source-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:SentenceSource}}
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:SentenceSource}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:SentenceSource}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:SentenceSource}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:SentenceSource}}
+            </span>
+            {{/Source-ru-RU}}
+            {{/SentenceSourceAudio}}
+            {{/SentenceSource}}
+            {{/ToggleAlwaysEmptyField}}
+
+            <input class="hide" id="hd-10" type="checkbox">
+            <label for="hd-10">Sentence
+                {{#SentenceSourceAudio}}▶{{/SentenceSourceAudio}}{{^SentenceSourceAudio}}▷{{/SentenceSourceAudio}}
+                {{#SentenceSourceIPA}}●{{/SentenceSourceIPA}}{{^SentenceSourceIPA}}○{{/SentenceSourceIPA}}
+                {{#SentenceSourceContextLeft}}●{{/SentenceSourceContextLeft}}{{^SentenceSourceContextLeft}}○{{/SentenceSourceContextLeft}}
+                {{#SentenceSource}}●{{/SentenceSource}}{{^SentenceSource}}○{{/SentenceSource}}
+                {{#SentenceSourceContextRight}}●{{/SentenceSourceContextRight}}{{^SentenceSourceContextRight}}○{{/SentenceSourceContextRight}}
+            
+            </label>
+            <div>
+                <span>
+                    {{#SentenceSourceIPA}}
+                    {{SentenceSourceIPA}}<br><br>
+                    {{/SentenceSourceIPA}}
+                </span>
+
+                <span class="context">
+                    {{#SentenceSourceContextLeft}}
+                    <!-- { {hint:SentenceSourceContextLeft} }<br><br> -->
+                    <a class="hint" href="#"
+                        onclick="this.style.display='none'; document.getElementById('hint0ba529b0c8ad4af4').style.display='block'; return false;">
+                        ...</a>
+                    <span id="hint0ba529b0c8ad4af4" class=hint style="display: none">{{SentenceSourceContextLeft}}</span><br>
+                    {{/SentenceSourceContextLeft}}
+                </span>
+
+                <span>
+                    {{#SentenceSource}}
+                    {{SentenceSource}}<br><br>
+                    {{/SentenceSource}}
+                </span>
+
+                <span class="context">
+                    {{#SentenceSourceContextRight}}
+                    <a class="hint" href="#"
+                        onclick="this.style.display='none'; document.getElementById('hint51cebd3ef40e9ccb').style.display='block'; return false;">
+                        ...</a>
+                    <span id="hint51cebd3ef40e9ccb" class=hint style="display: none">{{SentenceSourceContextRight}}</span><br>
+                    <!-- { {hint:SentenceSourceContextRight} }<br><br> -->
+                    {{/SentenceSourceContextRight}}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>
+{{/SentenceSourceRewriteAISentenceSource}}
+{{/SentenceSource}}
+
+{{#SentenceSourceRewriteAISentenceSource}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            <!-- ^WordSource -->
+            <!-- #SentenceDestination -->
+            {{^ToggleAlwaysEmptyField}}
+            <!-- { {^WordSourceMorphologyAI} } -->
+            {{#SentenceSourceRewriteAISentenceSource}}
+            {{#Source-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:SentenceSourceRewriteAISentenceSource}}
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:SentenceSourceRewriteAISentenceSource}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:SentenceSourceRewriteAISentenceSource}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:SentenceSourceRewriteAISentenceSource}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:SentenceSourceRewriteAISentenceSource}}
+                <!-- ru_RU voices=gTTS -->
+            </span>
+            {{/Source-ru-RU}}
+            {{/SentenceSourceRewriteAISentenceSource}}
+            <!-- /SentenceDestination -->
+            <!-- /WordSource -->
+            <!-- { {/WordSourceMorphologyAI} } -->
+            {{/ToggleAlwaysEmptyField}}
+
+            <!-- #SentenceSource -->
+            <input class="hide" id="hd-15" type="checkbox">
+            <label for="hd-15">Sentence Rewrite
+                {{#SentenceSourceRewriteAISentenceSource}}●{{/SentenceSourceRewriteAISentenceSource}}{{^SentenceSourceRewriteAISentenceSource}}○{{/SentenceSourceRewriteAISentenceSource}}
+            </label>
+            <div>
+                <span>
+                    {{#SentenceSourceRewriteAISentenceSource}}
+                    {{SentenceSourceRewriteAISentenceSource}}<br><br>
+                    {{/SentenceSourceRewriteAISentenceSource}}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>
+{{/SentenceSourceRewriteAISentenceSource}}
+
+{{#WordSourceDefinitionAISentenceSource}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            <span>
+                <!-- WordSourceDefinitionClipping TTS Toggle Off  -->
+                <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+                {{^ToggleAlwaysEmptyField}}
+                {{^WordSourceMorphologyAI}}
+                {{#WordSourceDefinitionAISentenceSource}}
+                {{#Source-en-GB}}
+                <span>
+                    {{tts en_GB voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                </span>
+                {{/Source-en-GB}}
+
+                {{#Source-en-US}}
+                <span>
+                    {{tts en_US voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                </span>
+                {{/Source-en-US}}
+
+                {{#Source-de-DE}}
+                <span>
+                    {{tts de_DE voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                </span>
+                {{/Source-de-DE}}
+
+                {{#Source-uk-UA}}
+                <span>
+                    {{tts uk_UA voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                </span>
+                {{/Source-uk-UA}}
+
+                {{#Source-ru-RU}}
+                <span>
+                    {{tts ru_RU voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                    <!-- ru_RU voices=gTTS -->
+                </span>
+                {{/Source-ru-RU}}
+                {{/WordSourceDefinitionAISentenceSource}}
+                {{/WordSourceMorphologyAI}}
+                {{/ToggleAlwaysEmptyField}}
+            </span>
+
+            <input {{#WordDestination}} class="hide" {{/WordDestination}} {{^WordDestination}} class="hide"
+                {{/WordDestination}} id="hd-155" type="checkbox">
+            <label for="hd-155">Definition
+                {{#WordSourceDefinitionAISentenceSource}}●{{/WordSourceDefinitionAISentenceSource}}{{^WordSourceDefinitionAISentenceSource}}○{{/WordSourceDefinitionAISentenceSource}}
+            </label>
+            <div>
+                <span>
+                    {{#WordSourceDefinitionAISentenceSource}}
+                    {{WordSourceDefinitionAISentenceSource}}<br><br>
+                    {{/WordSourceDefinitionAISentenceSource}}
+                </span>
+            </div>
+            <br>
+        </td>
+    </tr>
+</table>
+{{/WordSourceDefinitionAISentenceSource}}
+<!-- /SentenceSource -->
+<!-- Text Template/ -->
+<!-- L2 Template/ -->
+<!-- Case 1/ -->
+
+
+
+
+<!-- /Hint Template -->
+<input {{#WordSource}} {{#SentenceSource}} class="hide" {{/SentenceSource}} {{/WordSource}} {{^WordSource}}
+    {{^SentenceSource}} class="show" {{/SentenceSource}} {{/WordSource}} {{^WordSource}} {{#SentenceSource}}
+    class="hide" {{/SentenceSource}} {{/WordSource}} {{#WordSource}} {{^SentenceSource}} class="hide"
+    {{/SentenceSource}} {{/WordSource}} id="hd-60" type="checkbox">
+<label for="hd-60">
+    <div class="line-wrapper">
+        <hr class="custom-hr">
+        <span>☜</span>
+    </div <hr>
+</label>
+<div>
+    <!-- /Input Template -->
+    {{#WordSource}}
+    <!-- br -->
+    <input class="hide" id="hd-90" type="checkbox"><!-- hide | show -->
+    <label for="hd-90">Input
+        {{#WordSource}}●{{/WordSource}}{{^WordSource}}○{{/WordSource}}
+    </label>
+    <div>
+        <span>
+            {{type:WordSource}}
+        </span>
+    </div>
+    <br>
+    {{/WordSource}}
+    <!-- Input Template/ -->
+
+    <!-- /Input Template -->
+    {{^WordSource}}
+    {{#SentenceSource}}
+    <!-- br -->
+    <input class="hide" id="hd-130" type="checkbox"><!-- hide | show -->
+    <label for="hd-130">Input
+        {{#SentenceSource}}●{{/SentenceSource}}{{^SentenceSource}}○{{/SentenceSource}}
+    </label>
+    <div>
+        <span>
+            {{type:SentenceSource}}
+        </span>
+    </div>
+    <br>
+    {{/SentenceSource}}
+
+    {{^SentenceSource}}
+    <!-- br -->
+    <input class="hide" id="hd-135" type="checkbox"><!-- hide | show -->
+    <label for="hd-135">Source Sentence Cloze Input
+        {{#SentenceSourceCloze}}●{{/SentenceSourceCloze}}{{^SentenceSourceCloze}}○{{/SentenceSourceCloze}}
+    </label>
+    <div>
+        <span>
+            {{type:SentenceSourceCloze}}
+        </span>
+    </div>
+    <br>
+    {{/SentenceSource}}
+    {{/WordSource}}
+    <!-- Input Template/ -->
+
+    <input class="show" id="hd-320" type="checkbox">
+    <label for="hd-320">Source
+        {{#WordSource}}●{{/WordSource}}{{^WordSource}}○{{/WordSource}}
+        {{#SentenceSource}}●{{/SentenceSource}}{{^SentenceSource}}○{{/SentenceSource}}
+    </label>
+    <div>
+        {{#WordSource}}
+        <input class="hide" id="hd-160" type="checkbox">
+        <label for="hd-160">Word
+            {{#WordSourceAudio}}▶{{/WordSourceAudio}}{{^WordSourceAudio}}▷{{/WordSourceAudio}}
+            {{#WordSourceIPA}}●{{/WordSourceIPA}}{{^WordSourceIPA}}○{{/WordSourceIPA}}
+            {{#WordSource}}●{{/WordSource}}{{^WordSource}}○{{/WordSource}}
+            {{#WordSourceInflectedForm}}●{{/WordSourceInflectedForm}}{{^WordSourceInflectedForm}}○{{/WordSourceInflectedForm}}
+        </label>
+        <div>
+            {{#WordSource}}
+            <!-- br -->
+            <span>
+                {{#WordSourceIPA}}
+                [{{WordSourceIPA}}]<br><br>
+                {{/WordSourceIPA}}
+            </span>
+
+            <span>
+                {{#WordSource}}
+                {{WordSource}}<br><br>
+                {{/WordSource}}
+            </span>
+
+            <span>
+                {{#WordSourceInflectedForm}}
+                {{WordSourceInflectedForm}}<br><br>
+                {{/WordSourceInflectedForm}}
+            </span>
+            {{/WordSource}}
+
+            <!-- /Definition Template -->
+            {{#WordSourceDefinitionFirst}}
+            <span>
+                <!-- tts de_DE voices=Microsoft_Stefan:WordSourceDefinitionClipping -->
+            </span>
+            {{/WordSourceDefinitionFirst}}
+        </div>
+        <br>
+        {{/WordSource}}
+
+        <!-- #WordSourceDefinition -->
+        <!-- <input class="hide" id="hd-30" type="checkbox">
+            <label for="hd-30">Definition</label>
+            <div> -->
+        {{#WordSourceDefinitionFirst}}
+        <input class="hide" id="hd-370" type="checkbox">
+        <label for="hd-370">Word Definition First
+            {{#WordSourceDefinitionFirstClipping}}●{{/WordSourceDefinitionFirstClipping}}{{^WordSourceDefinitionFirstClipping}}○{{/WordSourceDefinitionFirstClipping}}
+            {{#WordSourceDefinitionFirst}}●{{/WordSourceDefinitionFirst}}{{^WordSourceDefinitionFirst}}○{{/WordSourceDefinitionFirst}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceDefinitionFirstClipping}}
+                <!-- WordSourceDefinitionClipping TTS Toggle Off  -->
+                <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+                {{^ToggleAlwaysEmptyField}}
+                {{#Source-en-GB}}
+                <span>
+                    {{tts en_GB voices=gTTS speed=1.0:WordSourceDefinitionFirstClipping}}
+                </span>
+                {{/Source-en-GB}}
+
+                {{#Source-en-US}}
+                <span>
+                    {{tts en_US voices=gTTS speed=1.0:WordSourceDefinitionFirstClipping}}
+                </span>
+                {{/Source-en-US}}
+
+                {{#Source-de-DE}}
+                <span>
+                    {{tts de_DE voices=gTTS speed=1.0:WordSourceDefinitionFirstClipping}}
+                </span>
+                {{/Source-de-DE}}
+
+                {{#Source-uk-UA}}
+                <span>
+                    {{tts uk_UA voices=gTTS speed=1.0:WordSourceDefinitionFirstClipping}}
+                </span>
+                {{/Source-uk-UA}}
+
+                {{#Source-ru-RU}}
+                <span>
+                    {{tts ru_RU voices=gTTS speed=1.0:WordSourceDefinitionFirstClipping}}
+                    <!-- ru_RU voices=gTTS -->
+                </span>
+                {{/Source-ru-RU}}
+                <br>
+                {{/ToggleAlwaysEmptyField}}
+
+                {{WordSourceDefinitionFirstClipping}}<br><br>
+                {{/WordSourceDefinitionFirstClipping}}
+            </span>
+            <span>
+                {{#WordSourceDefinitionFirst}}
+                {{WordSourceDefinitionFirst}}<br><br>
+                {{/WordSourceDefinitionFirst}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceDefinitionFirst}}
+
+        {{#WordSourceDefinitionSecond}}
+        <input class="hide" id="hd-380" type="checkbox">
+        <label for="hd-380">Word Definition Second
+            {{#WordSourceDefinitionSecond}}●{{/WordSourceDefinitionSecond}}{{^WordSourceDefinitionSecond}}○{{/WordSourceDefinitionSecond}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceDefinitionSecond}}
+                {{WordSourceDefinitionSecond}}<br><br>
+                {{/WordSourceDefinitionSecond}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceDefinitionSecond}}
+
+        {{#WordSourceMorphemeFirst}}
+        <input class="hide" id="hd-190" type="checkbox">
+        <label for="hd-190">Word Morpheme First
+            {{#WordSourceMorphemeFirst}}●{{/WordSourceMorphemeFirst}}{{^WordSourceMorphemeFirst}}○{{/WordSourceMorphemeFirst}}
+            {{#WordSourceMorphemeFirstDefinition}}●{{/WordSourceMorphemeFirstDefinition}}{{^WordSourceMorphemeFirstDefinition}}○{{/WordSourceMorphemeFirstDefinition}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceMorphemeFirst}}
+                {{WordSourceMorphemeFirst}}<br><br>
+                {{/WordSourceMorphemeFirst}}
+            </span>
+
+            <span>
+                {{#WordSourceMorphemeFirstDefinition}}
+                {{WordSourceMorphemeFirstDefinition}}<br><br>
+                {{/WordSourceMorphemeFirstDefinition}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceMorphemeFirst}}
+
+        {{#WordSourceMorphemeSecond}}
+        <input class="hide" id="hd-220" type="checkbox">
+        <label for="hd-220">Word Morpheme Second
+            {{#WordSourceMorphemeSecond}}●{{/WordSourceMorphemeSecond}}{{^WordSourceMorphemeSecond}}○{{/WordSourceMorphemeSecond}}
+            {{#WordSourceMorphemeSecondDefinition}}●{{/WordSourceMorphemeSecondDefinition}}{{^WordSourceMorphemeSecondDefinition}}○{{/WordSourceMorphemeSecondDefinition}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceMorphemeSecond}}
+                {{WordSourceMorphemeSecond}}<br><br>
+                {{/WordSourceMorphemeSecond}}
+            </span>
+
+            <span>
+                {{#WordSourceMorphemeSecondDefinition}}
+                {{WordSourceMorphemeSecondDefinition}}<br><br>
+                {{/WordSourceMorphemeSecondDefinition}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceMorphemeSecond}}
+
+        {{#WordSourceMorphemeThird}}
+        <input class="hide" id="hd-230" type="checkbox">
+        <label for="hd-230">Word Morpheme Third
+            {{#WordSourceMorphemeThird}}●{{/WordSourceMorphemeThird}}{{^WordSourceMorphemeThird}}○{{/WordSourceMorphemeThird}}
+            {{#WordSourceMorphemeThirdDefinition}}●{{/WordSourceMorphemeThirdDefinition}}{{^WordSourceMorphemeThirdDefinition}}○{{/WordSourceMorphemeThirdDefinition}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceMorphemeThird}}
+                {{WordSourceMorphemeThird}}<br><br>
+                {{/WordSourceMorphemeThird}}
+            </span>
+
+            <span>
+                {{#WordSourceMorphemeThirdDefinition}}
+                {{WordSourceMorphemeThirdDefinition}}<br><br>
+                {{/WordSourceMorphemeThirdDefinition}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceMorphemeThird}}
+
+        {{#WordSourceMorphemeFourth}}
+        <input class="hide" id="hd-240" type="checkbox">
+        <label for="hd-240">Word Morpheme Fourth
+            {{#WordSourceMorphemeFourth}}●{{/WordSourceMorphemeFourth}}{{^WordSourceMorphemeFourth}}○{{/WordSourceMorphemeFourth}}
+            {{#WordSourceMorphemeFourthDefinition}}●{{/WordSourceMorphemeFourthDefinition}}{{^WordSourceMorphemeFourthDefinition}}○{{/WordSourceMorphemeFourthDefinition}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceMorphemeFourth}}
+                {{WordSourceMorphemeFourth}}<br><br>
+                {{/WordSourceMorphemeFourth}}
+            </span>
+
+            <span>
+                {{#WordSourceMorphemeFourthDefinition}}
+                {{WordSourceMorphemeFourthDefinition}}<br><br>
+                {{/WordSourceMorphemeFourthDefinition}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceMorphemeFourth}}
+
+        {{#WordSourceMorphemeFifth}}
+        <input class="hide" id="hd-250" type="checkbox">
+        <label for="hd-250">Word Morpheme Fifth
+            {{#WordSourceMorphemeFifth}}●{{/WordSourceMorphemeFifth}}{{^WordSourceMorphemeFifth}}○{{/WordSourceMorphemeFifth}}
+            {{#WordSourceMorphemeFifthDefinition}}●{{/WordSourceMorphemeFifthDefinition}}{{^WordSourceMorphemeFifthDefinition}}○{{/WordSourceMorphemeFifthDefinition}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceMorphemeFifth}}
+                {{WordSourceMorphemeFifth}}<br><br>
+                {{/WordSourceMorphemeFifth}}
+            </span>
+
+            <span>
+                {{#WordSourceMorphemeFifthDefinition}}
+                {{WordSourceMorphemeFifthDefinition}}<br><br>
+                {{/WordSourceMorphemeFifthDefinition}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceMorphemeFifth}}
+        <!-- </div>
+            <br> -->
+        <!-- /WordSourceDefinition -->
+        <!-- Definition Template/ -->
+
+        {{#SentenceSource}}
+        <input class="hide" id="hd-270" type="checkbox">
+        <label for="hd-270">Sentence
+            {{#SentenceSourceAudio}}▶{{/SentenceSourceAudio}}{{^SentenceSourceAudio}}▷{{/SentenceSourceAudio}}
+            {{#SentenceSourceIPA}}●{{/SentenceSourceIPA}}{{^SentenceSourceIPA}}○{{/SentenceSourceIPA}}
+            {{#SentenceSource}}●{{/SentenceSource}}{{^SentenceSource}}○{{/SentenceSource}}
+        </label>
+        <div>
+            <span>
+                {{#SentenceSourceIPA}}
+                {{SentenceSourceIPA}}<br><br>
+                {{/SentenceSourceIPA}}
+            </span>
+
+            {{#WordSource}}
+            <span>
+                {{#SentenceSource}}
+                {{SentenceSource}}<br><br>
+                {{/SentenceSource}}
+            </span>
+            {{/WordSource}}
+
+            {{^WordSource}}
+            <span>
+                {{#SentenceSource}}
+                {{SentenceSource}}<br><br>
+                {{/SentenceSource}}
+            </span>
+            {{/WordSource}}
+        </div>
+        <br>
+
+        <input class="hide" id="hd-140" type="checkbox">
+        <label for="hd-140">Context
+            {{#SentenceSourceContextLeft}}●{{/SentenceSourceContextLeft}}{{^SentenceSourceContextLeft}}○{{/SentenceSourceContextLeft}}
+            {{#SentenceSource}}●{{/SentenceSource}}{{^SentenceSource}}○{{/SentenceSource}}
+            {{#SentenceSourceContextRight}}●{{/SentenceSourceContextRight}}{{^SentenceSourceContextRight}}○{{/SentenceSourceContextRight}}
+        </label>
+        <div>
+            <span>
+                {{#SentenceSourceContextLeft}}
+                {{SentenceSourceContextLeft}}<br><br>
+                {{/SentenceSourceContextLeft}}
+            </span>
+
+            <span class="sentence">
+                {{#SentenceSource}}
+                {{SentenceSource}}<br><br>
+                {{/SentenceSource}}
+            </span>
+
+            <span>
+                {{#SentenceSourceContextRight}}
+                {{SentenceSourceContextRight}}<br><br>
+                {{/SentenceSourceContextRight}}
+            </span>
+        </div>
+        <br>
+        <!-- #SentenceSourceWordlist -->
+        {{#SentenceSourceWordlist}}
+        <input class="show" id="hd-260" type="checkbox">
+        <label for="hd-260">Wordlist
+            {{#SentenceSourceWordlist}}●{{/SentenceSourceWordlist}}{{^SentenceSourceWordlist}}○{{/SentenceSourceWordlist}}
+        </label>
+        <div>
+            <span>
+                <!-- WordSourceDefinitionClipping TTS Toggle Off  -->
+                <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+                {{#ToggleAlwaysEmptyField}}
+                {{#SentenceSourceWordlist}}
+                {{#Source-en-GB}}
+                <span>
+                    {{tts en_GB voices=gTTS speed=1.0:SentenceSourceWordlist}}
+                </span>
+                {{/Source-en-GB}}
+
+                {{#Source-en-US}}
+                <span>
+                    {{tts en_US voices=gTTS speed=1.0:SentenceSourceWordlist}}
+                </span>
+                {{/Source-en-US}}
+
+                {{#Source-de-DE}}
+                <span>
+                    {{tts de_DE voices=gTTS speed=1.0:SentenceSourceWordlist}}
+                </span>
+                {{/Source-de-DE}}
+
+                {{#Source-uk-UA}}
+                <span>
+                    {{tts uk_UA voices=gTTS speed=1.0:SentenceSourceWordlist}}
+                </span>
+                {{/Source-uk-UA}}
+
+                {{#Source-ru-RU}}
+                <span>
+                    {{tts ru_RU voices=gTTS speed=1.0:SentenceSourceWordlist}}
+                    <!-- ru_RU voices=gTTS -->
+                </span>
+                {{/Source-ru-RU}}
+                <br>
+                {{/SentenceSourceWordlist}}
+                {{/ToggleAlwaysEmptyField}}
+            </span>
+
+            <span>
+                {{#SentenceSourceWordlist}}
+                {{SentenceSourceWordlist}}<br><br>
+                {{/SentenceSourceWordlist}}
+            </span>
+        </div>
+        <br>
+        {{/SentenceSourceWordlist}}
+        <!-- /SentenceSourceWordList -->
+        {{/SentenceSource}}
+    </div>
+    <br>
+
+    <input class="show" id="hd-330" type="checkbox">
+    <label for="hd-330">Destination
+        {{#WordDestination}}●{{/WordDestination}}{{^WordDestination}}○{{/WordDestination}}
+        {{#WordDestinationDefinitionFirst}}●{{/WordDestinationDefinitionFirst}}{{^WordDestinationDefinitionFirst}}○{{/WordDestinationDefinitionFirst}}
+        {{#WordDestinationDefinitionSecond}}●{{/WordDestinationDefinitionSecond}}{{^WordDestinationDefinitionSecond}}○{{/WordDestinationDefinitionSecond}}
+        {{#SentenceDestination}}●{{/SentenceDestination}}{{^SentenceDestination}}○{{/SentenceDestination}}
+    </label>
+    <div>
+        {{#WordDestination}}
+        <input class="hide" id="hd-170" type="checkbox">
+        <label for="hd-170">Word
+            {{#WordDestination}}●{{/WordDestination}}{{^WordDestination}}○{{/WordDestination}}
+        </label>
+        <div>
+            <span>
+                {{#WordDestination}}
+                {{WordDestination}}<br><br>
+                {{/WordDestination}}
+            </span>
+        </div>
+        <br>
+        {{/WordDestination}}
+
+        <!-- /Definition Template 2 -->
+        {{#WordDestinationDefinitionFirst}}
+        <input class="hide" id="hd-110" type="checkbox">
+        <label for="hd-110">Word Definition First
+            {{#WordDestinationDefinitionFirst}}●{{/WordDestinationDefinitionFirst}}{{^WordDestinationDefinitionFirst}}○{{/WordDestinationDefinitionFirst}}
+        </label>
+        <div>
+            <span>
+                {{#WordDestinationDefinitionFirst}}
+                {{WordDestinationDefinitionFirst}}<br><br>
+                {{/WordDestinationDefinitionFirst}}
+            </span>
+        </div>
+        <br>
+        {{/WordDestinationDefinitionFirst}}
+        <!-- Definition Template 2/ -->
+
+        {{#WordDestinationDefinitionSecond}}
+        <input class="hide" id="hd-390" type="checkbox">
+        <label for="hd-390">Word Definition Second
+            {{#WordDestinationDefinitionSecond}}●{{/WordDestinationDefinitionSecond}}{{^WordDestinationDefinitionSecond}}○{{/WordDestinationDefinitionSecond}}
+        </label>
+        <div>
+            <span>
+                {{#WordDestinationDefinitionSecond}}
+                {{WordDestinationDefinitionSecond}}<br><br>
+                {{/WordDestinationDefinitionSecond}}
+            </span>
+        </div>
+        <br>
+        {{/WordDestinationDefinitionSecond}}
+
+        {{#SentenceDestination}}
+        <input class="hide" id="hd-280" type="checkbox">
+        <label for="hd-280">Sentence
+            {{#SentenceDestination}}●{{/SentenceDestination}}{{^SentenceDestination}}○{{/SentenceDestination}}
+        </label>
+        <div>
+            <span>
+                {{#SentenceDestination}}
+                {{SentenceDestination}}<br><br>
+                {{/SentenceDestination}}
+            </span>
+
+            <span class="sentence2">
+                {{#SentenceDestination2}}
+                {{SentenceDestination2}}<br><br>
+                {{/SentenceDestination2}}
+            </span>
+        </div>
+        <br>
+        {{/SentenceDestination}}
+
+        {{#SentenceDestination}}
+        <input class="hide" id="hd-285" type="checkbox">
+        <label for="hd-285">Context
+            {{#SentenceDestinationContextLeft}}●{{/SentenceDestinationContextLeft}}{{^SentenceDestinationContextLeft}}○{{/SentenceDestinationContextLeft}}
+            {{#SentenceDestination}}●{{/SentenceDestination}}{{^SentenceDestination}}○{{/SentenceDestination}}
+            {{#SentenceDestinationContextRight}}●{{/SentenceDestinationContextRight}}{{^SentenceDestinationContextRight}}○{{/SentenceDestinationContextRight}}
+            {{#SentenceDestination2ContextLeft}}●{{/SentenceDestination2ContextLeft}}{{^SentenceDestination2ContextLeft}}○{{/SentenceDestination2ContextLeft}}
+            {{#SentenceDestination2}}●{{/SentenceDestination2}}{{^SentenceDestination2}}○{{/SentenceDestination2}}
+            {{#SentenceDestination2ContextRight}}●{{/SentenceDestination2ContextRight}}{{^SentenceDestination2ContextRight}}○{{/SentenceDestination2ContextRight}}
+        </label>
+        <div>
+            <span>
+                {{#SentenceDestinationContextLeft}}
+                {{SentenceDestinationContextLeft}}<br><br>
+                {{/SentenceDestinationContextLeft}}
+            </span>
+
+            <span class="context2">
+                {{#SentenceDestination2ContextLeft}}
+                {{SentenceDestination2ContextLeft}}<br><br>
+                {{/SentenceDestination2ContextLeft}}
+            </span>
+
+            <span class="sentence">
+                {{#SentenceDestination}}
+                {{SentenceDestination}}<br><br>
+                {{/SentenceDestination}}
+            </span>
+
+            <span class="sentence">
+                {{#SentenceDestination2}}
+                {{SentenceDestination2}}<br><br>
+                {{/SentenceDestination2}}
+            </span>
+
+            <span>
+                {{#SentenceDestinationContextRight}}
+                {{SentenceDestinationContextRight}}<br><br>
+                {{/SentenceDestinationContextRight}}
+            </span>
+
+            <span class="context2">
+                {{#SentenceDestination2ContextRight}}
+                {{SentenceDestination2ContextRight}}<br><br>
+                {{/SentenceDestination2ContextRight}}
+            </span>
+        </div>
+        <br>
+        {{/SentenceDestination}}
+    </div>
+    <br>
+
+
+    <input class="hide" id="hd-350" type="checkbox">
+    <label for="hd-350">Ukrainian
+        {{#WordUkrainian}}●{{/WordUkrainian}}{{^WordUkrainian}}○{{/WordUkrainian}}
+        {{#SentenceUkrainian}}●{{/SentenceUkrainian}}{{^SentenceUkrainian}}○{{/SentenceUkrainian}}
+    </label>
+    <div>
+        <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+        {{#ToggleAlwaysEmptyField}}
+        {{#WordUkrainian}}
+        <span>
+            {{tts uk_UA voices=gTTS speed=1.0:WordUkrainian}}
+        </span>
+        <br>
+        {{/WordUkrainian}}
+        {{/ToggleAlwaysEmptyField}}
+
+        <span>
+            {{#WordUkrainian}}
+            {{WordUkrainian}}<br><br>
+            {{/WordUkrainian}}
+        </span>
+
+        <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+        {{#ToggleAlwaysEmptyField}}
+        {{#SentenceUkrainian}}
+        <span>
+            {{tts uk_UA voices=gTTS speed=1.0:SentenceUkrainian}}
+        </span>
+        <br>
+        {{/SentenceUkrainian}}
+        {{/ToggleAlwaysEmptyField}}
+
+        <span>
+            {{#SentenceUkrainian}}
+            {{SentenceUkrainian}}<br><br>
+            {{/SentenceUkrainian}}
+        </span>
+    </div>
+    <br>
+
+    <input class="hide" id="hd-180" type="checkbox">
+    <label for="hd-180">English
+        {{#WordEnglish}}●{{/WordEnglish}}{{^WordEnglish}}○{{/WordEnglish}}
+        {{#SentenceEnglish}}●{{/SentenceEnglish}}{{^SentenceEnglish}}○{{/SentenceEnglish}}
+    </label>
+    <div>
+        <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+        {{#ToggleAlwaysEmptyField}}
+        {{#WordEnglish}}
+        <span>
+            <!-- tts en_GB voices=gTTS:WordEnglish -->
+            {{tts en_US voices=gTTS speed=1.0:WordEnglish}}
+        </span>
+        <br>
+        {{/WordEnglish}}
+        {{/ToggleAlwaysEmptyField}}
+
+        <span>
+            {{#WordEnglish}}
+            {{WordEnglish}}<br><br>
+            {{/WordEnglish}}
+        </span>
+
+        <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+        {{#ToggleAlwaysEmptyField}}
+        {{#SentenceEnglish}}
+        <span>
+            <!-- tts en_GB voices=gTTS:WordEnglish -->
+            {{tts en_US voices=gTTS speed=1.0:SentenceEnglish}}
+        </span>
+        <br>
+        {{/SentenceEnglish}}
+        {{/ToggleAlwaysEmptyField}}
+
+        <span>
+            {{#SentenceEnglish}}
+            {{SentenceEnglish}}<br><br>
+            {{/SentenceEnglish}}
+        </span>
+    </div>
+    <br>
+
+    <input class="hide" id="hd-340" type="checkbox">
+    <label for="hd-340">AI
+        {{#WordSourceDefinitionAISentenceSource}}●{{/WordSourceDefinitionAISentenceSource}}{{^WordSourceDefinitionAISentenceSource}}○{{/WordSourceDefinitionAISentenceSource}}
+        {{#WordSourceSynonymAI}}●{{/WordSourceSynonymAI}}{{^WordSourceSynonymAI}}○{{/WordSourceSynonymAI}}
+    </label>
+    <div>
+
+        {{#WordSourceDefinitionAISentenceSource}}
+        <input {{#WordDestination}} class="hide" {{/WordDestination}} {{^WordDestination}} class="hide"
+            {{/WordDestination}} id="hd-300" type="checkbox">
+        <label for="hd-300">Definition
+            {{#WordSourceDefinitionAISentenceSource}}●{{/WordSourceDefinitionAISentenceSource}}{{^WordSourceDefinitionAISentenceSource}}○{{/WordSourceDefinitionAISentenceSource}}
+            {{#WordSourceDefinitionAISentenceDestination}}●{{/WordSourceDefinitionAISentenceDestination}}{{^WordSourceDefinitionAISentenceDestination}}○{{/WordSourceDefinitionAISentenceDestination}}
+        </label>
+        <div>
+            <!-- #WordSourceDefinitionAI -->
+
+            {{#WordSourceDefinitionAISentenceSource}}
+            <input {{#WordDestination}} class="hide" {{/WordDestination}} {{^WordDestination}} class="hide"
+                {{/WordDestination}} id="hd-150" type="checkbox">
+            <label for="hd-150">Source
+                {{#WordSourceDefinitionAISentenceSource}}●{{/WordSourceDefinitionAISentenceSource}}{{^WordSourceDefinitionAISentenceSource}}○{{/WordSourceDefinitionAISentenceSource}}
+            </label>
+            <div>
+                <span>
+                    <!-- WordSourceDefinitionClipping TTS Toggle Off  -->
+                    <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+                    {{#ToggleAlwaysEmptyField}}
+                    {{#WordSourceDefinitionAISentenceSource}}
+                    {{#Source-en-GB}}
+                    <span>
+                        {{tts en_GB voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                    </span>
+                    {{/Source-en-GB}}
+
+                    {{#Source-en-US}}
+                    <span>
+                        {{tts en_US voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                    </span>
+                    {{/Source-en-US}}
+
+                    {{#Source-de-DE}}
+                    <span>
+                        {{tts de_DE voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                    </span>
+                    {{/Source-de-DE}}
+
+                    {{#Source-uk-UA}}
+                    <span>
+                        {{tts uk_UA voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                    </span>
+                    {{/Source-uk-UA}}
+
+                    {{#Source-ru-RU}}
+                    <span>
+                        {{tts ru_RU voices=gTTS speed=1.0:WordSourceDefinitionAISentenceSource}}
+                        <!-- ru_RU voices=gTTS -->
+                    </span>
+                    {{/Source-ru-RU}}
+                    <br>
+                    {{/WordSourceDefinitionAISentenceSource}}
+                    {{/ToggleAlwaysEmptyField}}
+                </span>
+
+                <span>
+                    {{#WordSourceDefinitionAISentenceSource}}
+                    {{WordSourceDefinitionAISentenceSource}}<br><br>
+                    {{/WordSourceDefinitionAISentenceSource}}
+                </span>
+            </div>
+            <br>
+            {{/WordSourceDefinitionAISentenceSource}}
+            <!-- /WordSourceDefinitionAI -->
+
+            <!-- #WordSourceDefinitionAI -->
+            {{#WordSourceDefinitionAISentenceDestination}}
+            <input {{#WordDestination}} class="hide" {{/WordDestination}} {{^WordDestination}} class="hide"
+                {{/WordDestination}} id="hd-290" type="checkbox">
+            <label for="hd-290">Destination
+                {{#WordSourceDefinitionAISentenceDestination}}●{{/WordSourceDefinitionAISentenceDestination}}{{^WordSourceDefinitionAISentenceDestination}}○{{/WordSourceDefinitionAISentenceDestination}}
+            </label>
+            <div>
+                <span>
+                    <!-- WordSourceDefinitionClipping TTS Toggle Off  -->
+                    <!-- Play : Toggle-Always-Empty-Field = ^ - show, # - hide  -->
+                    {{#ToggleAlwaysEmptyField}}
+                    {{#WordSourceDefinitionAISentenceDestination}}
+                    {{#Destination-en-GB}}
+                    <span>
+                        {{tts en_GB voices=gTTS speed=1.0:WordSourceDefinitionAISentenceDestination}}
+                    </span>
+                    {{/Destination-en-GB}}
+
+                    {{#Destination-en-US}}
+                    <span>
+                        {{tts en_US voices=gTTS speed=1.0:WordSourceDefinitionAISentenceDestination}}
+                    </span>
+                    {{/Destination-en-US}}
+
+                    {{#Destination-de-DE}}
+                    <span>
+                        {{tts de_DE voices=gTTS speed=1.0:WordSourceDefinitionAISentenceDestination}}
+                    </span>
+                    {{/Destination-de-DE}}
+
+                    {{#Destination-uk-UA}}
+                    <span>
+                        {{tts uk_UA voices=gTTS speed=1.0:WordSourceDefinitionAISentenceDestination}}
+                    </span>
+                    {{/Destination-uk-UA}}
+
+                    {{#Destination-ru-RU}}
+                    <span>
+                        {{tts ru_RU voices=gTTS speed=1.0:WordSourceDefinitionAISentenceDestination}}
+                        <!-- ru_RU voices=gTTS -->
+                    </span>
+                    {{/Destination-ru-RU}}
+                    <br>
+                    {{/WordSourceDefinitionAISentenceDestination}}
+                    {{/ToggleAlwaysEmptyField}}
+                </span>
+
+                <span>
+                    {{#WordSourceDefinitionAISentenceDestination}}
+                    {{WordSourceDefinitionAISentenceDestination}}<br><br>
+                    {{/WordSourceDefinitionAISentenceDestination}}
+                </span>
+            </div>
+            <br>
+            {{/WordSourceDefinitionAISentenceDestination}}
+            <!-- /WordSourceDefinitionAI -->
+        </div>
+        <br>
+        {{/WordSourceDefinitionAISentenceSource}}
+
+        {{#WordSourceSynonymAI}}
+        <input class="hide" id="hd-310" type="checkbox">
+        <label for="hd-310">Synonym
+            {{#WordSourceSynonymAI}}●{{/WordSourceSynonymAI}}{{^WordSourceSynonymAI}}○{{/WordSourceSynonymAI}}
+        </label>
+        <div>
+            <span>
+                {{#WordSourceSynonymAI}}
+                {{WordSourceSynonymAI}}<br><br>
+                {{/WordSourceSynonymAI}}
+            </span>
+        </div>
+        <br>
+        {{/WordSourceSynonymAI}}
+    </div>
+    <br>
+
+    <span>
+        {{#TextSource}}
+        {{hint:TextSource}}<br>
+        {{/TextSource}}
+    </span>
+
+    <span>
+        {{#TextDestination}}
+        {{hint:TextDestination}}<br>
+        {{/TextDestination}}
+    </span>
+
+    {{#TextSourceURL}}
+    <input class="hide" id="hd-120" type="checkbox">
+    <label for="hd-120">Text URL
+        {{#TextSourceURL}}●{{/TextSourceURL}}{{^TextSourceURL}}○{{/TextSourceURL}}
+    </label>
+    <div>
+        <span>
+            <a href={{TextSourceURL}}>{{TextSourceURL}}</a><br><br>
+        </span>
+    </div>
+    <br>
+    {{/TextSourceURL}}
+
+    <span>
+        {{#WordSourceCloze}}
+        {{hint:WordSourceCloze}}<br>
+        {{/WordSourceCloze}}
+    </span>
+
+    <span>
+        {{#SentenceGerman}}
+        {{hint:SentenceGerman}}<br>
+        {{/SentenceGerman}}
+    </span>
+
+    <span>
+        {{#Image}}
+        {{Image}}<br><br>
+        {{/Image}}
+    </span>
+
+    <span>
+        {{#Source}}
+        {{hint:Source}}<br>
+        {{/Source}}
+    </span>
+
+    {{#SourceURL}}
+    <input class="hide" id="hd-110" type="checkbox">
+    <label for="hd-110">Source URL
+        {{#SourceURL}}●{{/SourceURL}}{{^SourceURL}}○{{/SourceURL}}
+    </label>
+    <div>
+        <span>
+            <a href={{SourceURL}}>{{SourceURL}}</a><br><br>
+        </span>
+    </div>
+    <br>
+    {{/SourceURL}}
+
+    <span>
+        {{#WordSourceContextAI}}
+        {{hint:WordSourceContextAI}}<br>
+        {{/WordSourceContextAI}}
+    </span>
+
+    <span>
+        {{#Overlapping}}
+        {{hint:Overlapping}}<br>
+        {{/Overlapping}}
+    </span>
+
+    <span>
+        {{#Deck}}
+        {{Deck}}<br><br>
+        {{/Deck}}
+    </span>
+
+    <span>
+        {{#Tags}}
+        {{Tags}}<br><br>
+        {{/Tags}}
+    </span>
+
+    <span>
+        {{#Quotation}}
+        {{hint:Quotation}}<br>
+        {{/Quotation}}
+    </span>
+
+    <span>
+        {{#Note}}
+        {{Note}}<br><br>
+        {{/Note}}
+    </span>
+</div>
+<!-- Hint Template/ -->
+
+<span id="side1"></span>

@@ -1,0 +1,218 @@
+.card {
+  font-family: Arial;
+  font-size: 20px;
+  text-align: left;
+  color: black;
+  background-color: white;
+}
+
+.cloze {
+  font-weight: bold;
+  color: MediumSeaGreen !important;
+}
+
+.green {
+  font-weight: bold;
+  color: MediumSeaGreen !important;
+}
+
+.context {
+  color: rgb(165, 165, 165);
+}
+
+.context2 {
+  color: rgb(210, 210, 210);
+}
+
+.sentence {
+  color: rgb(165, 165, 165);
+}
+
+.sentence2 {
+  color: rgb(210, 210, 210);
+}
+
+a.hint {
+  color: MediumSeaGreen !important;
+  text-decoration: none;
+}
+
+.nightMode .cloze {
+  color: MediumSeaGreen !important;
+}
+
+.mobile .disabled {
+  display: none;
+  visibility: hidden;
+}
+
+.hide,
+.hide+label~div {
+  display: none;
+}
+
+.hide+label,
+.hide:checked+label {
+  padding: 0;
+  color: MediumSeaGreen !important;
+  cursor: pointer;
+  border-bottom: 1px dotted green;
+}
+
+.hide:checked+label {
+  color: red;
+  border-bottom: 0;
+}
+
+.hide:checked+label+div {
+  display: block;
+  background: transparent;
+  -moz-box-shadow: inset 3px 3px 10px #7d8e8f;
+  -webkit-box-shadow: inset 3px 3px 10px #7d8e8f;
+  box-shadow: inset 3px 3px 10px #7d8e8f;
+  padding: 10px;
+}
+
+.show,
+.show+label~div {
+  display: none;
+}
+
+.show+label,
+.show:not(:checked)+label {
+  padding: 0;
+  color: MediumSeaGreen !important;
+  cursor: pointer;
+  border-bottom: 1px dotted green;
+}
+
+.show:not(:checked)+label {
+  color: red;
+  border-bottom: 0;
+}
+
+.show:not(:checked)+label+div {
+  display: block;
+  background: transparent;
+  -moz-box-shadow: inset 3px 3px 10px #7d8e8f;
+  -webkit-box-shadow: inset 3px 3px 10px #7d8e8f;
+  box-shadow: inset 3px 3px 10px #7d8e8f;
+  padding: 10px;
+}
+
+.svg-container {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.centered-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.android .ankitts {
+  display: none;
+}
+
+.field-audio {
+  display: none;
+  visibility: hidden;
+}
+
+.field-hide {
+  display: none;
+  visibility: hidden;
+}
+
+html:not(.android) .ankidroidTtsButton {
+  display: none;
+}
+
+#answer-delete {
+  border: none;
+  height: 0;
+  visibility: hidden;
+}
+
+.right {
+  float: right;
+}
+
+.line-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.custom-hr {
+  flex: 1;
+  margin-right: 5px;
+  border: none;
+  border-top: 1px solid MediumSeaGreen;
+}
+
+.layout-table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.layout-table td {
+  padding: 10px 10px;
+}
+
+.container-9333 {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.text-group-1192 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.spacer {
+  height: 50px;
+  visibility: hidden;
+}
+
+.container-4453 {
+  position: relative;
+}
+
+.container-4453::before {
+  content: '';
+  display: block;
+  height: 50px;
+  visibility: hidden;
+}
+
+.svc-element-20241027120232 {
+  height: 50px;
+  visibility: hidden;
+  background-color: lightgrey;
+  margin: 10px 0;
+}
+
+.fixed-table {
+  width: 100%;
+  height: 70px;
+  border-collapse: collapse;
+}
+
+.fixed-cell {
+  height: 20px;
+  border: 1px solid MediumSeaGreen;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.spacer-cell {
+  height: 20px;
+  width: 0;
+}

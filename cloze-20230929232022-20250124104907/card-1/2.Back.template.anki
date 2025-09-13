@@ -1,0 +1,215 @@
+{{#WordDestination}}
+<span class="field-hide">
+    <span>
+        {{#WordDestination}}
+        • {{WordDestination}}<br>
+        {{/WordDestination}}
+    </span>
+</span>
+{{/WordDestination}}
+
+{{#WordSourceIPA}}
+<span class="field-hide">
+    <span>
+        {{#WordSourceIPA}}
+        • {{WordSourceIPA}}<br>
+        {{/WordSourceIPA}}
+    </span>
+</span>
+{{/WordSourceIPA}}
+
+{{#SentenceSource}}
+<span class="field-hide">
+    <span>
+        {{#SentenceSource}}
+        • {{SentenceSource}}<br>
+        {{/SentenceSource}}
+    </span>
+</span>
+{{/SentenceSource}}
+
+{{#SentenceDestination}}
+<span class="field-hide">
+    <span>
+        {{#SentenceDestination}}
+        • {{SentenceDestination}}<br>
+        {{/SentenceDestination}}
+    </span>
+</span>
+{{/SentenceDestination}}
+
+{{#WordDestinationDefinitionFirst}}
+<span class="field-hide">
+    <span>
+        {{#WordDestinationDefinitionFirst}}
+        • {{WordDestinationDefinitionFirst}}<br>
+        {{/WordDestinationDefinitionFirst}}
+    </span>
+</span>
+{{/WordDestinationDefinitionFirst}}
+
+<div id="cloze-is-back" hidden="">{{cloze:SentenceSourceCloze}}</div>
+
+{{FrontSide}}
+
+{{#SentenceSourceCloze}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            {{^ToggleAlwaysEmptyField}}
+            {{#SentenceSourceCloze}}
+            {{#Source-en-GB}}
+            {{tts en_GB voices=gTTS speed=1.0:cloze-only:SentenceSourceCloze}}
+            <span>
+            </span>
+            {{/Source-en-GB}}
+
+            {{#Source-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:cloze-only:SentenceSourceCloze}}
+            </span>
+            {{/Source-en-US}}
+
+            {{#Source-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:cloze-only:SentenceSourceCloze}}
+            </span>
+            {{/Source-de-DE}}
+
+            {{#Source-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:cloze-only:SentenceSourceCloze}}
+            </span>
+            {{/Source-uk-UA}}
+
+            {{#Source-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:cloze-only:SentenceSourceCloze}}
+            </span>
+            {{/Source-ru-RU}}
+            {{/SentenceSourceCloze}}
+            {{/ToggleAlwaysEmptyField}}
+
+            {{#SentenceSourceCloze}}
+            <input class="hide" id="hd-410" type="checkbox">
+            <label for="hd-410">Sentence Cloze</label>
+            <div>
+            </div>
+            {{/SentenceSourceCloze}}
+        </td>
+    </tr>
+</table>
+{{/SentenceSourceCloze}}
+
+{{#WordDestination}}
+{{^SentenceSourceCloze}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            {{#WordDestination}}
+            {{#Destination-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:WordDestination}}
+            </span>
+            {{/Destination-en-GB}}
+
+            {{#Destination-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:WordDestination}}
+            </span>
+            {{/Destination-en-US}}
+
+            {{#Destination-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:WordDestination}}
+            </span>
+            {{/Destination-de-DE}}
+
+            {{#Destination-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:WordDestination}}
+            </span>
+            {{/Destination-uk-UA}}
+
+            {{#Destination-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:WordDestination}}
+            </span>
+            {{/Destination-ru-RU}}
+            {{/WordDestination}}
+
+            <input class="hide" id="hd-40" type="checkbox">
+            <label for="hd-40">Word
+                {{#WordDestination}}●{{/WordDestination}}{{^WordDestination}}○{{/WordDestination}}
+            </label>
+            <div>
+                <span>
+                    {{#WordDestination}}
+                    {{WordDestination}}<br><br>
+                    {{/WordDestination}}
+                </span>
+            </div>
+        </td>
+    </tr>
+</table>
+{{/SentenceSourceCloze}}
+{{/WordDestination}}
+
+{{#SentenceDestination}}
+{{^SentenceSourceCloze}}
+<table class="fixed-table">
+    <tr>
+        <td class="fixed-cell">
+            {{^ToggleAlwaysEmptyField}}
+            {{#SentenceDestination}}
+            {{#Destination-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:SentenceDestination}}
+            </span>
+            {{/Destination-en-GB}}
+
+            {{#Destination-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:SentenceDestination}}
+            </span>
+            {{/Destination-en-US}}
+
+            {{#Destination-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:SentenceDestination}}
+            </span>
+            {{/Destination-de-DE}}
+
+            {{#Destination-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:SentenceDestination}}
+            </span>
+            {{/Destination-uk-UA}}
+
+            {{#Destination-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:SentenceDestination}}
+            </span>
+            {{/Destination-ru-RU}}
+            {{/SentenceDestination}}
+            {{/ToggleAlwaysEmptyField}}
+
+            <input class="hide" id="hd-70" type="checkbox">
+            <label for="hd-70">Sentence
+                {{#SentenceDestination}}●{{/SentenceDestination}}{{^SentenceDestination}}○{{/SentenceDestination}}
+            </label>
+            <div>
+                <span>
+                    {{#SentenceDestination}}
+                    {{SentenceDestination}}<br><br>
+                    {{/SentenceDestination}}
+                </span>
+            </div>
+            <br>
+        </td>
+    </tr>
+</table>
+{{/SentenceSourceCloze}}
+{{/SentenceDestination}}
+
+<span id="side2"></span>
