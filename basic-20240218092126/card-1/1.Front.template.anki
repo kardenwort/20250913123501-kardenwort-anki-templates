@@ -185,7 +185,7 @@
             {{/ToggleAlwaysEmptyField}}
 
             <!-- #WordSource -->
-            <input class="hide" id="hd-20" type="checkbox">
+            <input class="show" id="hd-20" type="checkbox">
             <label for="hd-20">Word
                 {{#WordSourceAudio}}▶{{/WordSourceAudio}}{{^WordSourceAudio}}▷{{/WordSourceAudio}}
                 {{#WordSourceIPA}}●{{/WordSourceIPA}}{{^WordSourceIPA}}○{{/WordSourceIPA}}
@@ -270,7 +270,8 @@
             {{/SentenceSource}}
             {{/ToggleAlwaysEmptyField}}
 
-            <input class="hide" id="hd-10" type="checkbox">
+            <input {{#WordSource}} class="show" {{/WordSource}} {{^WordSource}} class="show"
+                {{/WordSource}} id="hd-10" type="checkbox">
             <label for="hd-10">Sentence
                 {{#SentenceSourceAudio}}▶{{/SentenceSourceAudio}}{{^SentenceSourceAudio}}▷{{/SentenceSourceAudio}}
                 {{#SentenceSourceIPA}}●{{/SentenceSourceIPA}}{{^SentenceSourceIPA}}○{{/SentenceSourceIPA}}
@@ -364,7 +365,8 @@
             {{/ToggleAlwaysEmptyField}}
 
             <!-- #SentenceSource -->
-            <input class="hide" id="hd-15" type="checkbox">
+            <input {{#WordSource}} class="hide" {{/WordSource}} {{^WordSource}} class="show"
+                {{/WordSource}} id="hd-15" type="checkbox">
             <label for="hd-15">Sentence Rewrite
                 {{#SentenceSourceRewriteAISentenceSource}}●{{/SentenceSourceRewriteAISentenceSource}}{{^SentenceSourceRewriteAISentenceSource}}○{{/SentenceSourceRewriteAISentenceSource}}
             </label>

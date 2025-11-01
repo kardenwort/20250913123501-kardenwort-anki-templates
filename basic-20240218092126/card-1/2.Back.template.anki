@@ -80,13 +80,13 @@
             {{/Destination-uk-UA}}
 
             {{#Destination-ru-RU}}
-            <span id="sound2">
+            <span>
                 {{tts ru_RU voices=gTTS speed=1.0:WordDestination}}
             </span>
             {{/Destination-ru-RU}}
             {{/WordDestination}}
 
-            <input class="hide" id="hd-40" type="checkbox">
+            <input class="show" id="hd-40" type="checkbox">
             <label for="hd-40">Word
                 {{#WordDestination}}●{{/WordDestination}}{{^WordDestination}}○{{/WordDestination}}
             </label>
@@ -143,60 +143,112 @@
             {{/WordSourceDefinitionAISentenceDestination}}
             {{/ToggleAlwaysEmptyField}}
 
-            <input class="hide" id="hd-70" type="checkbox">
+            {{^ToggleAlwaysEmptyField}}
+            {{^WordSourceDefinitionAISentenceDestination}}
+            {{#SentenceDestination2}}
+            {{#Destination-en-GB}}
+            <span>
+                {{tts en_GB voices=gTTS speed=1.0:SentenceDestination2}}
+            </span>
+            {{/Destination-en-GB}}
+
+            {{#Destination-en-US}}
+            <span>
+                {{tts en_US voices=gTTS speed=1.0:SentenceDestination2}}
+            </span>
+            {{/Destination-en-US}}
+
+            {{#Destination-de-DE}}
+            <span>
+                {{tts de_DE voices=gTTS speed=1.0:SentenceDestination2}}
+            </span>
+            {{/Destination-de-DE}}
+
+            {{#Destination-uk-UA}}
+            <span>
+                {{tts uk_UA voices=gTTS speed=1.0:SentenceDestination2}}
+            </span>
+            {{/Destination-uk-UA}}
+
+            {{#Destination-ru-RU}}
+            <span>
+                {{tts ru_RU voices=gTTS speed=1.0:SentenceDestination2}}
+            </span>
+            {{/Destination-ru-RU}}
+            {{/SentenceDestination2}}
+            {{/WordSourceDefinitionAISentenceDestination}}
+            {{/ToggleAlwaysEmptyField}}
+
+            <input class="show" id="hd-70" type="checkbox">
             <label for="hd-70">Sentence
                 {{#SentenceDestinationContextLeft}}●{{/SentenceDestinationContextLeft}}{{^SentenceDestinationContextLeft}}○{{/SentenceDestinationContextLeft}}
                 {{#SentenceDestination}}●{{/SentenceDestination}}{{^SentenceDestination}}○{{/SentenceDestination}}
                 {{#SentenceDestinationContextRight}}●{{/SentenceDestinationContextRight}}{{^SentenceDestinationContextRight}}○{{/SentenceDestinationContextRight}}
             </label>
+            
             <div>
-                <span class="context">
-                    {{#SentenceDestinationContextLeft}}
-                    <a class="hint" href="#"
-                        onclick="this.style.display='none'; document.getElementById('hint12cdbd3ef30e9dcb').style.display='block'; return false;">
-                        ...</a>
-                    <span id="hint12cdbd3ef30e9dcb" class=hint style="display: none">{{SentenceDestinationContextLeft}}</span><br>
-                    {{/SentenceDestinationContextLeft}}
-                </span>
-                
-                <span class="context2">
-                    {{#SentenceDestination2ContextLeft}}
-                    <a class="hint" href="#"
-                        onclick="this.style.display='none'; document.getElementById('hint12cdbd3sh30e9dcb').style.display='block'; return false;">
-                        ...</a>
-                    <span id="hint12cdbd3sh30e9dcb" class=hint style="display: none">{{SentenceDestination2ContextLeft}}</span><br>
-                    {{/SentenceDestination2ContextLeft}}
-                </span>
+                {{#SentenceDestination}}
+                <input class="show" id="hd-200" type="checkbox">
+                <label for="hd-200">Sentence 1
+                </label>
+                <div>
+                    <span class="context">
+                        {{#SentenceDestinationContextLeft}}
+                        <a class="hint" href="#"
+                            onclick="this.style.display='none'; document.getElementById('hint12cdbd3ef30e9dcb').style.display='block'; return false;">
+                            ...</a>
+                        <span id="hint12cdbd3ef30e9dcb" class=hint style="display: none">{{SentenceDestinationContextLeft}}</span><br>
+                        {{/SentenceDestinationContextLeft}}
+                    </span>
 
-                <span>
-                    {{#SentenceDestination}}
-                    {{SentenceDestination}}<br><br>
-                    {{/SentenceDestination}}
-                </span>
+                    <span>
+                        {{#SentenceDestination}}
+                        {{SentenceDestination}}<br><br>
+                        {{/SentenceDestination}}
+                    </span>
 
-                <span class="sentence2">
-                    {{#SentenceDestination2}}
-                    {{SentenceDestination2}}<br><br>
-                    {{/SentenceDestination2}}
-                </span>
+                    <span class="context">
+                        {{#SentenceDestinationContextRight}}
+                        <a class="hint" href="#"
+                            onclick="this.style.display='none'; document.getElementById('hint31cgbd3ef2e1cab').style.display='block'; return false;">
+                            ...</a>
+                        <span id="hint31cgbd3ef2e1cab" class=hint style="display: none">{{SentenceDestinationContextRight}}</span><br>
+                        {{/SentenceDestinationContextRight}}
+                    </span>
+                </div>
+                <br>
+                {{/SentenceDestination}}
 
-                <span class="context">
-                    {{#SentenceDestinationContextRight}}
-                    <a class="hint" href="#"
-                        onclick="this.style.display='none'; document.getElementById('hint31cgbd3ef2e1cab').style.display='block'; return false;">
-                        ...</a>
-                    <span id="hint31cgbd3ef2e1cab" class=hint style="display: none">{{SentenceDestinationContextRight}}</span><br>
-                    {{/SentenceDestinationContextRight}}
-                </span>
+                {{#SentenceDestination2}}
+                <input class="show" id="hd-210" type="checkbox">
+                <label for="hd-210">Sentence 2
+                </label>
+                <div>
+                    <span class="context">
+                        {{#SentenceDestination2ContextLeft}}
+                        <a class="hint" href="#"
+                            onclick="this.style.display='none'; document.getElementById('hint12cdbd3sh30e9dcb').style.display='block'; return false;">
+                            ...</a>
+                        <span id="hint12cdbd3sh30e9dcb" class=hint style="display: none">{{SentenceDestination2ContextLeft}}</span><br>
+                        {{/SentenceDestination2ContextLeft}}
+                    </span>
 
-                <span class="context2">
-                    {{#SentenceDestination2ContextRight}}
-                    <a class="hint" href="#"
-                        onclick="this.style.display='none'; document.getElementById('hint31cgbsge2e1cab').style.display='block'; return false;">
-                        ...</a>
-                    <span id="hint31cgbsge2e1cab" class=hint style="display: none">{{SentenceDestination2ContextRight}}</span><br>
-                    {{/SentenceDestination2ContextRight}}
-                </span>
+                    <span>
+                        {{#SentenceDestination2}}
+                        {{SentenceDestination2}}<br><br>
+                        {{/SentenceDestination2}}
+                    </span>
+
+                    <span class="context">
+                        {{#SentenceDestination2ContextRight}}
+                        <a class="hint" href="#"
+                            onclick="this.style.display='none'; document.getElementById('hint31cgbsge2e1cab').style.display='block'; return false;">
+                            ...</a>
+                        <span id="hint31cgbsge2e1cab" class=hint style="display: none">{{SentenceDestination2ContextRight}}</span><br>
+                        {{/SentenceDestination2ContextRight}}
+                    </span>
+                </div>
+                {{/SentenceDestination2}}
             </div>
             <br>
         </td>
@@ -243,7 +295,7 @@
             {{/SentenceSourceRewriteAISentenceDestination}}
             {{/ToggleAlwaysEmptyField}}
 
-            <input class="hide" id="hd-75" type="checkbox">
+            <input class="show" id="hd-75" type="checkbox">
             <label for="hd-75">Sentence Rewrite
                 {{#SentenceSourceRewriteAISentenceDestination}}●{{/SentenceSourceRewriteAISentenceDestination}}{{^SentenceSourceRewriteAISentenceDestination}}○{{/SentenceSourceRewriteAISentenceDestination}}
             </label>
@@ -302,7 +354,7 @@
                 {{/ToggleAlwaysEmptyField}}
             </span>
 
-            <input {{#WordDestination}} class="hide" {{/WordDestination}} {{^WordDestination}} class="hide"
+            <input {{#WordDestination}} class="show" {{/WordDestination}} {{^WordDestination}} class="show"
                 {{/WordDestination}} id="hd-295" type="checkbox">
             <label for="hd-295">Definition
                 {{#WordSourceDefinitionAISentenceDestination}}●{{/WordSourceDefinitionAISentenceDestination}}{{^WordSourceDefinitionAISentenceDestination}}○{{/WordSourceDefinitionAISentenceDestination}}
@@ -326,31 +378,31 @@
         <td class="fixed-cell">
             {{^ToggleAlwaysEmptyField}}
             {{#Destination-en-GB}}
-            <span id="sound2">
+            <span>
                 {{tts en_GB voices=gTTS speed=1.0:WordSourceMorphologyAI}}
             </span>
             {{/Destination-en-GB}}
 
             {{#Destination-en-US}}
-            <span id="sound2">
+            <span>
                 {{tts en_US voices=gTTS speed=1.0:WordSourceMorphologyAI}}
             </span>
             {{/Destination-en-US}}
 
             {{#Destination-de-DE}}
-            <span id="sound2">
+            <span>
                 {{tts de_DE voices=gTTS speed=1.0:WordSourceMorphologyAI}}
             </span>
             {{/Destination-de-DE}}
 
             {{#Destination-uk-UA}}
-            <span id="sound2">
+            <span>
                 {{tts uk_UA voices=gTTS speed=1.0:WordSourceMorphologyAI}}
             </span>
             {{/Destination-uk-UA}}
 
             {{#Destination-ru-RU}}
-            <span id="sound2">
+            <span>
                 {{tts ru_RU voices=gTTS speed=1.0:WordSourceMorphologyAI}}
             </span>
             {{/Destination-ru-RU}}
