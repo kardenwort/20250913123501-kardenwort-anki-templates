@@ -38,6 +38,16 @@
 </span>
 {{/SentenceDestination}}
 
+{{#SentenceDestination2}}
+<span class="field-hide">
+    <span>
+        {{#SentenceDestination2}}
+        • {{SentenceDestination2}}<br>
+        {{/SentenceDestination2}}
+    </span>
+</span>
+{{/SentenceDestination2}}
+
 {{#WordDestinationDefinitionFirst}}
 <span class="field-hide">
     <span>
