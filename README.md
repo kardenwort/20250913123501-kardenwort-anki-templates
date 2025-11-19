@@ -30,6 +30,7 @@ This project is not just about looks; it's about intelligent design. The templat
     - [Media \& Metadata Fields](#media--metadata-fields)
     - [System Fields](#system-fields)
   - [Customization](#customization)
+  - [Kardenwort Ecosystem](#kardenwort-ecosystem)
   - [License and Acknowledgements](#license-and-acknowledgements)
 
 ---
@@ -191,6 +192,14 @@ You can easily customize the Text-to-Speech voices and speeds.
 4.  You can change the parameters, for example: `{{tts en_US voices=Microsoft_Zira speed=0.9:WordSource}}`.
 
 Refer to the [Anki Manual](https://docs.ankiweb.net/templates/text-to-speech.html) for a full list of available voices and options.
+
+[Return to Top](#table-of-contents)
+
+---
+
+## Kardenwort Ecosystem
+
+This project is part of the **[Kardenwort](https://github.com/kardenwort)** environment, designed to create a focused and efficient learning ecosystem.
 
 [Return to Top](#table-of-contents)
 
